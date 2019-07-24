@@ -23,4 +23,4 @@ const port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`Server started on ${port}`));
 
-//PICK UP AT 13:00 ON VIDEO 2 TO CREATE API AND MODEL FOR DB
+//api to get request from the front to "GET, PUT, POS and DELETE"
