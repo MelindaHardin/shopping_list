@@ -1,14 +1,16 @@
-//server
+//dependencies
 const express = require("express");
 const app = express();
+const port = process.env.PORT || 5000;
 
-//mongo db
-
-const mongoose = require("mongoose");
+const items = require("./routes/api/items");
 
 //bodyparser middleware
-const bodyParser = require("body-parser");
-app.use(bodyParser.json());
+// Configure body parser for AJAX requests
+app.use(express.json({ extended: false }));
+
+//mongo db
+const mongoose = require("mongoose");
 
 //connect to Mongo
 mongoose
@@ -18,9 +20,7 @@ mongoose
   .then(() => console.log("Mongo is connected!"))
   .catch(err => console.log(err));
 
-//server
-const port = process.env.PORT || 5000;
+//Use Routes
+app.use("/api/items", items);
 
 app.listen(port, () => console.log(`Server started on ${port}`));
-
-//api to get request from the front to "GET, PUT, POS and DELETE"
