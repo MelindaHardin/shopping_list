@@ -1,6 +1,9 @@
 //dependencies
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
+const config = require("config");
+const db = config.get("mongoURI");
 const port = process.env.PORT || 5000;
 
 const items = require("./routes/api/items");
@@ -9,12 +12,9 @@ const items = require("./routes/api/items");
 // Configure body parser for AJAX requests
 app.use(express.json({ extended: false }));
 
-//mongo db
-const mongoose = require("mongoose");
-
 //connect to Mongo
 mongoose
-  .connect("mongodb://localhost/shopping", {
+  .connect(db, {
     useNewUrlParser: true
   })
   .then(() => console.log("Mongo is connected!"))
