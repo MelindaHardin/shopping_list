@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
     .sort({ date: -1 })
     .then(items => res.json(items));
 });
-
+//----------------------------------------------------------
 //@route 		POST api/items
 //@desc 		Create an Item
 //@access		Public (private if we had authentication)
@@ -28,6 +28,7 @@ router.post("/", (req, res) => {
     .then(item => res.json(item))
     .catch(err => res.status(422).json(err));
 });
+//----------------------------------------------------------
 
 //@route 		DELETE api/items/:id
 //@desc 		Delete an Item
